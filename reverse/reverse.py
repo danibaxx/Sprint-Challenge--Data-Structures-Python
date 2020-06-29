@@ -39,11 +39,12 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        # save current 1st
+        # checking if node is none
         if node == None:
             return node
         if node.next_node == None:
             return node
+        # save current 1st
 
 
 linked_list = LinkedList()
@@ -53,5 +54,3 @@ linked_list.add_to_head(2)
 linked_list.add_to_head(3)
 linked_list.add_to_head(4)
 print(linked_list)
-
-linked_list.reverse()
