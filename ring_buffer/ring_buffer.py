@@ -1,24 +1,36 @@
 class RingBuffer:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.value = []
+        self.value = [None] * capacity
+        self.pointer = 0
+
 
     def append(self, item):
         # adds given element to the buffer
-        self.capacity += 1
-        self.value.append(item)
+        self.value[self.pointer] = item
+        # print('items:' item)
+        # move pointer
+        self.pointer += 1
+        if self.pointer == self.capacity:
+            self.pointer = 0
+        
 
     def get(self):
         # returns all elements in the buffer in given order
         # should not return none
-        if self.capacity == None:
-            return False
-        else:
-            return self.capacity
+        # return self.value
+        items = []
+
+        for i in self.value:
+            if i != None:
+                items.append(i)
+        return items
+
+
 
 buffer = RingBuffer(5)
 
-buffer.get()
+print(buffer.get())
 
 buffer.append('a')
 buffer.append('b')
@@ -26,6 +38,8 @@ buffer.append('c')
 buffer.append('d')
 buffer.append('e')
 
-buffer.get()
+print(buffer.get())
 
 buffer.append('f')
+
+print(buffer.get())
